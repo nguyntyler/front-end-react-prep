@@ -28,3 +28,15 @@ fetch("https://icanhazdadjoke.com", {
 	});
 
 // Turning above into async await.
+
+async function main() {
+	const response = await fetch("https://icanhazdadjoke.com", {
+		headers: {
+			Accept: "application/json",
+		},
+	});
+	const jokeData = await response.json();
+	console.log(jokeData.joke);
+}
+
+main();
