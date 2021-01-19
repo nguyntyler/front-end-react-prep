@@ -16,4 +16,15 @@ fetch("https://icanhazdadjoke.com", {
 	headers: {
 		Accept: "application/json", //Step two.1
 	},
-}).then((response) => response.json()); //Step two.2 What comes back is a response and we want to get that response and make it json.
+})
+	.then((response) => response.json()) //Step two.2 What comes back is a response and we want to get that response and make it json.
+	.then((data) => {
+		// This returns the joke as a full object.
+		console.log(data);
+		return data.joke; // We are pulling out only the joke key:value pair.
+	})
+	.then((theJoke) => {
+		console.log(theJoke); // This just logs the joke itself from the object.
+	});
+
+// Turning above into async await.
