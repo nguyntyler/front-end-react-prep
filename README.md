@@ -35,6 +35,8 @@ Promised exist in one of three states:
 Closures happen a lot in promises when working with data.
 Closures and callbacks are the same thing. Closures are also anonymous functions that just uses variables from outside of the function.
 
+> Higher-order functions accept or returns a function.
+
 ---
 
 Promises are both .then (able) and async await (able).

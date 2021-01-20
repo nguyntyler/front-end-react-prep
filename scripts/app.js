@@ -39,4 +39,37 @@ async function main() {
 	console.log(jokeData.joke);
 }
 
-main();
+// ------- Start of rendering on page.
+
+async function getJoke() {
+	const jokePromise = fetch("https://icanhazdadjoke.com", {
+		headers: {
+			Accept: "application/json",
+		},
+	});
+	const response = await jokePromise;
+	const jokeData = await response.json();
+	return jokeData.joke;
+}
+
+async function renderJoke(joke) {
+	// const joke = await getJoke();
+	console.log(`This is the joke: ${joke}`);
+
+	const p = document.createElement("p");
+
+	p.textContent = joke;
+
+	document.getElementById("root").appendChild(p);
+}
+
+async function start() {
+	const button = document.getElementById("new-joke");
+
+	button.addEventListener("click", async (evt) => {
+		evt.preventDefault();
+		const joke = await getJoke();
+		renderJoke(joke);
+	});
+}
+start();
